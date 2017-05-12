@@ -1,6 +1,6 @@
 # awesome-lists
 some awesome examples🎉🎉🎉
 
-The first example is [here](http://purecsstooltip.surge.sh/){:target="_blank"}
+The first example is <a href="http://purecsstooltip.surge.sh/" target="_blank">here</a>
 
 
