@@ -10,3 +10,7 @@ This is a custom tooltip use the pure css . The live demo is 👉 [here](http://
 
 [checkout](http://amazingtext.surge.sh)
 
+## amazing card
+
+[live demo](http://amazingcard.surge.sh)
+

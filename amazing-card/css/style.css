@@ -1,0 +1,41 @@
+body{
+    background-color: rgb(93.3%, 93.3%, 93.3%);
+}
+.box h3{
+	text-align:center;
+	position:relative;
+	top:80px;
+}
+.box {
+	width:40%;
+	height:200px;
+    border-radius: 3px;
+	background:#FFF;
+	margin:40px auto;
+}
+
+.effect
+{
+  position: relative;
+}
+.effect:before, .effect:after
+{
+	/* 	the core */
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  box-shadow: 0 15px 10px #777;
+  transform: rotate(-3deg);
+}
+.effect:after
+{
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
