@@ -9,7 +9,7 @@ body{
 .box {
 	width:40%;
 	height:200px;
-    border-radius: 3px;
+  border-radius: 3px;
 	background:#FFF;
 	margin:40px auto;
 }
