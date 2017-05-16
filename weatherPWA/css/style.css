@@ -1,0 +1,10 @@
+:root{
+    --winWidth: 100%;
+    --winHeight: 100vh;
+}
+
+body{
+    background-color: rgb(96.8%, 96.8%, 96.8%);
+    margin: 0;
+    height: var(--winHeight);
+}
