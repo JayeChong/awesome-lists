@@ -7,6 +7,7 @@ function(){
      */
     
     app = {
+        // 数据
         latitude: 0,
         longitude: 0,
         queryBaseGeolocation: "http://api.jisuapi.com/weather/query?appkey=b545980f676142dd&location=",
@@ -14,7 +15,21 @@ function(){
         defaultCity: "北京",
         todayWeatherInfo: {},
         CityWeatherInfos: {},
+
+        // 状态
+        loading: true,
     };
+    // UI数据（DOM结构）
+    app.LoadBar = $('.progress');
+
+
+
+
+    /******************************************************************************************/
+    //
+    // 数据获取操作
+    //
+    /******************************************************************************************/
 
     // getGolocationPromise
     app.geolocationWrapper = new Promise(function(resolve , reject){
@@ -85,41 +100,36 @@ function(){
         });
     }
 
-    // UI更新
-    app.updateUI = function(){
-        console.log("Time to updata UI!");
-    }
-
     app.getWeatherInfoByLocation= function(position){
         var url = app.queryBaseGeolocation+position.coords.latitude+","+position.coords.longitude;
-        app.getWeatherInfo(url)
-        .then(
-            function(data){
-                console.log(data);
-                app.todayWeatherInfo = data;
-                app.updateUI();
-            },
-            function(error){
-                console.log(error);
-            }
-        ).catch(function(error){
-            console.log(error);
-        });
+        // app.getWeatherInfo(url)
+        // .then(
+        //     function(data){
+        //         if(app.todayWeatherInfo.updatetime != data.updatetime)
+        //             app.todayWeatherInfo = data;
+        //         app.updateUI();
+        //     },
+        //     function(error){
+        //         console.log(error);
+        //     }
+        // ).catch(function(error){
+        //     console.log(error);
+        // });
     }
     app.getWeatherInfoByCityName = function(Cname){
         var url = app.queryBaseCityName+Cname;
-        app.getWeatherInfo(url)
-        .then(
-            function(data){
-                app.todayWeatherInfo = data;
-                app.updateUI();
-            },
-            function(error){
-                console.log(error);
-            }
-        ).catch(function(error){
-            console.log(error);
-        });
+        // app.getWeatherInfo(url)
+        // .then(
+        //     function(data){
+        //         app.todayWeatherInfo = data;
+        //         app.updateUI();
+        //     },
+        //     function(error){
+        //         console.log(error);
+        //     }
+        // ).catch(function(error){
+        //     console.log(error);
+        // });
     }
 
     app.geolocationWrapper
@@ -133,6 +143,28 @@ function(){
         console.log("Promise 发生了错误！");
         console.log(error);
     });
+
+    /******************************************************************************************/
+    //
+    // UI更新操作
+    //
+    /******************************************************************************************/
+
+    // UI更新
+    app.updateUI = function(){
+        console.log("Time to updata UI!");
+        console.log(app.todayWeatherInfo);
+        app.loading = false;
+        app.updateLoadBar();
+        // afterUpdataUI app.loading = false;
+    }
+
+    app.updateLoadBar = function(){
+        if(!app.loading)
+            app.LoadBar.css("display","none");
+        else
+            app.LoadBar.css("display","block");
+    }
 
 }
 )();
