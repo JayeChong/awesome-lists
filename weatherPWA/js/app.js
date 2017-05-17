@@ -15,13 +15,12 @@ function(){
         defaultCity: "北京",
         todayWeatherInfo: {},
         CityWeatherInfos: {},
+        fackdata: fackData().result,
 
         // 状态
         loading: true,
     };
     // UI数据（DOM结构）
-    app.LoadBar = $('.progress');
-
 
 
 
@@ -39,7 +38,7 @@ function(){
         };
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(
-                function(position){resolve(position)},
+                function(position){resolve(position);},
                 function(error){
                     switch(error.code){
                         case 1:{
@@ -67,8 +66,7 @@ function(){
                         break;
                     }
 
-                }
-                ,options);
+                },options);
         }else {
             aler("你的浏览器不支持定位。");
             reject(0);
@@ -98,7 +96,7 @@ function(){
                     reject(textStatus);
             }});
         });
-    }
+    };
 
     app.getWeatherInfoByLocation= function(position){
         var url = app.queryBaseGeolocation+position.coords.latitude+","+position.coords.longitude;
@@ -115,7 +113,8 @@ function(){
         // ).catch(function(error){
         //     console.log(error);
         // });
-    }
+    };
+
     app.getWeatherInfoByCityName = function(Cname){
         var url = app.queryBaseCityName+Cname;
         // app.getWeatherInfo(url)
@@ -130,19 +129,7 @@ function(){
         // ).catch(function(error){
         //     console.log(error);
         // });
-    }
-
-    app.geolocationWrapper
-    .then(
-        app.getWeatherInfoByLocation
-        ,function(error){
-            console.log(error);
-            app.getWeatherInfoByCityName(app.defaultCity);
-        })
-    .catch(function(error){
-        console.log("Promise 发生了错误！");
-        console.log(error);
-    });
+    };
 
     /******************************************************************************************/
     //
@@ -155,16 +142,27 @@ function(){
         console.log("Time to updata UI!");
         console.log(app.todayWeatherInfo);
         app.loading = false;
-        app.updateLoadBar();
-        // afterUpdataUI app.loading = false;
-    }
+    };
 
-    app.updateLoadBar = function(){
-        if(!app.loading)
-            app.LoadBar.css("display","none");
-        else
-            app.LoadBar.css("display","block");
-    }
+
+     /******************************************************************************************/
+    //
+    // 主程序开始
+    //
+    /******************************************************************************************/
+    app.geolocationWrapper
+    .then(
+        app.getWeatherInfoByLocation,function(error){
+            console.log(error);
+            app.getWeatherInfoByCityName(app.defaultCity);
+        })
+    .catch(function(error){
+        console.log("Promise 发生了错误！");
+        console.log(error);
+    });
+
+    console.log(app.fackdata);
+
 
 }
 )();

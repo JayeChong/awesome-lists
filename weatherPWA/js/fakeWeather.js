@@ -1,4 +1,5 @@
-{
+function fackData(){
+return  {
     "status": "0",
     "msg": "ok",
     "result": {
@@ -99,4 +100,5 @@
             }
         ]
     }
+};
 }
