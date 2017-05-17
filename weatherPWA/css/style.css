@@ -98,8 +98,13 @@ body{
     position: relative;
     height: 100%;
     color: rgb(95%, 95%, 95%);
-    border-right: 1px solid rgb(43.7%, 43.7%, 43.7%);
+    border-right: 1px solid rgba(56.2%, 56.2%, 56.2%, 0.5);
 }
+
+.next{
+    flex: 1;
+}
+
 #last{
     border: none !important;
 }
@@ -133,7 +138,7 @@ body{
 }
 
 .today-temp .today-date span{
-    padding: 4px 8px;
+    padding: 5px 8px;
     display: inline-block;
     font-size: 14px;
     line-height: 14px;
@@ -168,7 +173,8 @@ body{
     line-height: 14px;
 }
 
-
 .next{
-    flex: 1;
+    padding: 30px 20px;
+    text-align: center;
 }
+
