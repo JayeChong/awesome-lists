@@ -11,53 +11,88 @@
         <div class="mask"></div>
         <div class="container">
                 <div class="card">  
-                    <div class="card-image">
+                    <!-- 天气图片 -->
+                    <div class="card-image ">
+                        <button class="more  btn-floating pulse">view more</button>
                         <img src="./images/GZ.jpg" alt="">
+                        <div class="upperImage">
+                            <div class="upper">
+                                <span>
+                                    <input type="text" name="city" value="广州" id="cityInputer">
+                                </span>
+                                <div class="location-wrapper">
+                                    <div class="Lo">
+                                        <img src="./images/location.png" alt=""/>
+                                        <p class="location" id="topRLocation">
+                                            广州  中国
+                                        </p>
+                                        <p class="time" id="time">
+                                            2 : 30 pm
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="down" id="charts">
+
+                            </div>
+                        </div>
                     </div>
+                    <!-- 天气内容 -->
                     <div class="card-content">
                         <div class="today flex-item">
                                 <div class="today-temp">
                                     <div class="temp">
-                                        <span>35</span>
+                                        <span id="todayTemp">35</span>
                                     </div>
                                     <div class="today-date">
-                                        <span>5月17日 星期三</span>
+                                        <span id="todayDate">5月17日 星期三</span>
                                     </div>
                                 </div>
                                 <div class="today-weather">
                                     <div class="weather-icon">
-                                        <img src="./images/weatherD/16.png" alt="">
+                                        <img src="./images/weatherD/8.png" alt="" id="todayWeather">
                                     </div>
                                     <div class="simple-info">
-                                        <span>多云 / 二级南风</span>
+                                        <span id="todayWeatherInfo">阵雨 / 二级南风</span>
                                     </div>
                                 </div>
                         </div>
                         <div class="next flex-item">
-                            <span>TUE</span>
-                            <img src="./images/weatherD/2.png" alt="">
-                            <span>26</span>
+                            <span class="next-date">TUE</span>
+                            <img class="next-weather" src="./images/weatherD/8.png" alt="">
+                            <span class="next-temp">26</span>
                         </div>
                         <div class="next flex-item">
-                            Next flex-item
+                            <span class="next-date">WED</span>
+                            <img class="next-weather" src="./images/weatherD/8.png" alt="">
+                            <span class="next-temp">26</span>
                         </div>
                         <div class="next flex-item">
-                            Next flex-item
+                            <span class="next-date">THU</span>
+                            <img class="next-weather" src="./images/weatherD/1.png" alt="">
+                            <span class="next-temp">26</span>
                         </div>
                         <div class="next flex-item">
-                            Next
+                            <span class="next-date">FRI</span>
+                            <img class="next-weather" src="./images/weatherD/3.png" alt="">
+                            <span class="next-temp">26</span>
                         </div>
                         <div class="next flex-item">
-                            Next
+                            <span class="next-date">SAT</span>
+                            <img class="next-weather" src="./images/weatherD/4.png" alt="">
+                            <span class="next-temp">26</span>
                         </div>
                         <div class="next flex-item" id="last">
-                            Next
+                            <span class="next-date">SUN</span>
+                            <img class="next-weather" src="./images/weatherD/10.png" alt="">
+                            <span class="next-temp">26</span>
                         </div>
                     </div>
                 </div>
             </div>
         <script type="text/javascript" src="js/fakeWeather.js"></script>
         <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/echarts.simple.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
         
     </body>

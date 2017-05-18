@@ -17,8 +17,23 @@ function(){
         CityWeatherInfos: {},
         fackdata: fackData().result,
 
+        // DOM值
+        timer : $("#time"),
+        cityInputer: $("#cityInputer"),
+        topRLocation: $("#topRLocation"),
+        todayTemp: $("#todayTemp"),
+        todayDate: $("#todayDate"),
+        todayWeather: $("#todayWeather"),
+        todayWeatherInfo: $("#todayWeatherInfo"),
+
+        nextReportDate: $(".next .next-date"),          //[]
+        nextReportWeather: $(".next .next-weather"),    //[]
+        nextReportTemp: $(".next .next-temp"),          //[]
+
+
         // 状态
         loading: true,
+        timeID: null,
     };
     // UI数据（DOM结构）
 
@@ -100,6 +115,7 @@ function(){
 
     app.getWeatherInfoByLocation= function(position){
         var url = app.queryBaseGeolocation+position.coords.latitude+","+position.coords.longitude;
+        console.log(url);
         // app.getWeatherInfo(url)
         // .then(
         //     function(data){
@@ -144,12 +160,32 @@ function(){
         app.loading = false;
     };
 
+     /******************************************************************************************/
+    //
+    // 时间显示
+    //
+    /******************************************************************************************/
+
+    app.coutTime = function(){
+        app.timeID = setInterval(function(){
+            var date = new Date();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+            var strTime = (hour > 12) ? ((hour-12)+" : "+(min<10?"0"+min:min)+" pm"):(hour+" : "+(min<10?"0"+min:min)+" am");
+            app.timer.text(strTime);
+        },1000);
+    }
+
 
      /******************************************************************************************/
     //
     // 主程序开始
     //
     /******************************************************************************************/
+
+    app.coutTime();
+
     app.geolocationWrapper
     .then(
         app.getWeatherInfoByLocation,function(error){
@@ -162,7 +198,6 @@ function(){
     });
 
     console.log(app.fackdata);
-
 
 }
 )();

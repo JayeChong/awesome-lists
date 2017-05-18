@@ -42,6 +42,8 @@ body{
     padding: 40px 0;
 }
 
+/********************************************************************************************/
+/* 天气卡片 */
 .card{
     position: relative;
     height: 100%;
@@ -49,8 +51,17 @@ body{
     background-color: transparent;
     transition: box-shadow .25s;
     border-radius: 2px;
+    transition: .5s all;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
+
+/*.card:hover {
+	transform: translateY(-0.5rem) scale(1.0125);
+	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+}*/
+
+/********************************************************************************************/
+/* 天气城市图片 */
 
 .card-image{
     position: relative;
@@ -71,6 +82,67 @@ body{
     bottom: 0;
 }
 
+.upperImage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.upperImage .upper{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.upperImage .upper span{
+    flex: 1;
+}
+
+.upperImage .upper span input{
+    background-color: transparent;
+    color:   rgb(95%, 95%, 95%);
+    font-size: 40px;
+    border: none;
+    outline: none;
+}
+.upperImage .upper span input::-webkit-input-placeholder{
+    text-shadow: none;
+    -webkit-text-fill-color: initial;
+}
+
+.location-wrapper{
+    flex: 1;
+    display: flex;
+    flex-direction: row-reverse;
+    color:   rgb(95%, 95%, 95%);
+}
+
+.Lo{
+    text-align: center;
+}
+
+.Lo img{
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+}
+
+
+.down{
+    height: 100%;
+    width: 100%;
+}
+
+
+/********************************************************************************************/
+/* 天气预报内容 */
+
 .card-content::before { 
     background: url("../images/GZ.jpg") 0 /cover fixed;
 }
@@ -80,7 +152,7 @@ body{
     height: 30%;
     display: flex;
     flex-direction: row;
-    background: hsla(0,0%,100%,.35) border-box;
+    background: hsla(0,0%,100%,.5) border-box;
     border-radius: 0 0 2px 2px;
 }
 
@@ -98,20 +170,13 @@ body{
     position: relative;
     height: 100%;
     color: rgb(95%, 95%, 95%);
-    border-right: 1px solid rgba(56.2%, 56.2%, 56.2%, 0.5);
+    border-right: 1px solid rgba(56.2%, 56.2%, 56.2%,1);
 }
 
-.next{
-    flex: 1;
-}
-
-#last{
-    border: none !important;
-}
-
-/*℃*/
+/********************************************************************************************/
+/* 今天天气预报内容 */
 .today{
-    flex: 2;
+    flex: 3;
     padding: 30px;
     display: flex;
     flex-direction: row;
@@ -142,7 +207,7 @@ body{
     display: inline-block;
     font-size: 14px;
     line-height: 14px;
-    background-color: rgb(44.8%, 44.8%, 44.8%);
+    background-color: rgba(56.2%, 56.2%, 56.2%, 0.702);
     border-radius: 14px;
 }
 
@@ -164,6 +229,7 @@ body{
     top: 0;
     right: 0;
     bottom: 0;
+    z-index: 0;
 }
 
 .today-weather .simple-info{
@@ -173,8 +239,101 @@ body{
     line-height: 14px;
 }
 
+/********************************************************************************************/
+/* 未来6天天气预报内容 */
+
 .next{
     padding: 30px 20px;
     text-align: center;
+    flex: 1;
 }
 
+.next .next-temp{
+    font-size: 14px;
+    position: relative;
+}
+
+.next img{
+    display: block;
+    margin: 0 auto;
+    transform: scale(0.5)
+}
+
+.next .next-temp::before{
+    position: absolute;
+    content: "℃";
+    font-size: 12px;
+    transform: scale(0.8);
+    left: 100%;
+    top: 0;
+}
+
+.next .next-date{
+    font-size: 12px;
+    background-color: rgba(56.2%, 56.2%, 56.2%, 0.702);
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+
+#last{
+    border: none !important;
+}
+
+
+/********************************************************************************************/
+/* pulse button */
+.more{
+    outline: none;
+    border: none;
+    bottom: 10px;
+    border-radius: 0px 5px 5px 0px;
+    padding: 4px 6px;
+}
+
+.btn-floating{
+    display: inline-block;
+    color: #fff;
+    position: absolute;
+    overflow: hidden;
+    z-index: 1;
+    background-color: #26a69a;
+    transition: .3s;
+    cursor: pointer;
+    vertical-align: middle;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+
+
+.pulse::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: inherit;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: opacity .3s, transform .3s;
+    animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    z-index: 0;
+}
+
+@keyframes pulse-animation {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5)
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5)
+    }
+}
