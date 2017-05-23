@@ -1,0 +1,19 @@
+{
+  "name": "example-chat",
+  "version": "1.0.0",
+  "description": "nodejs socket.io chat room",
+  "main": "app.js",
+  "scripts": {
+    "dev": "supervisor app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "socket.io"
+  ],
+  "author": "Jaye Chong",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3",
+    "socket.io": "^2.0.1"
+  }
+}
