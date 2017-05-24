@@ -1,24 +1,32 @@
 {
   "name": "chat-me",
   "version": "1.0.0",
-  "description": "a real-time funnny chat application",
+  "description": "a real-time chat application",
   "main": "index.js",
-  "author": "Jaye Chong",
-  "license": "MIT",
   "scripts": {
+    "start": "webpack && supervisor server/server.js"
   },
   "keywords": [
-    "real-time",
     "react",
     "react-router",
-    "socket.io",
-    "express"
+    "node",
+    "socket.io"
   ],
+  "author": "Jaye Chong",
+  "license": "MIT",
   "dependencies": {
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "^4.15.3",
+    "material-ui": "^0.18.1",
+    "morgan": "~1.6.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hot-loader": "^3.0.0-beta.7",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-tap-event-plugin": "^2.0.1",
+    "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
