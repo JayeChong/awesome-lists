@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 
 io.on('connection', function(socket){
   console.log('a user connected --- from server side');
-  io.of("/").clients(function(error, clients){
+  io.clients(function(error, clients){
       if (error) throw error;
       console.log(clients); 
     }
@@ -27,6 +27,7 @@ io.on('connection', function(socket){
 
 io.on('connection', function(socket){
     socket.on('ferret', function (name, fn) {
+        console.log("param from client is "+name);
         fn('woot');
   });
 });
