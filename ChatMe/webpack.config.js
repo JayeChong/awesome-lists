@@ -22,7 +22,7 @@ const config = {
         // // 为热替换(HMR)打包好代码
         // // only- 意味着只有成功更新运行代码才会执行热替换(HMR)
 
-        path.join(ROOT,'./app/index.jsx'),
+        path.join(ROOT,'./client/index.jsx'),
         // 入口文件
         
     ],
@@ -32,7 +32,7 @@ const config = {
         path: path.join(ROOT,'./build'),
 
         // 对于热替换(HMR)是必须的，让 webpack 知道在哪里载入热更新的模块(chunk)
-        // publicPath: '/'
+        publicPath: '/'
     },
 
     module: {
@@ -48,6 +48,10 @@ const config = {
                 // use: ExtractTextPlugin.extract({
                 //     use: 'css-loader'
                 // })
+            },
+            {
+                test: /\.(png|jpg)$/,
+                use: ['url-loader?limit=8192'],
             },
         ]
     },
@@ -80,13 +84,13 @@ const config = {
 
     ],
 
-    // devServer: {
-    //     contentBase: path.join(__dirname, "build"),
-    //     compress: true,
-    //     port: 8080,
-    //     //热模块替换功能
-    //     hot: false
-    // }
+    devServer: {
+        contentBase: path.join(__dirname, "build"),
+        compress: true,
+        port: 8080,
+        //热模块替换功能
+        hot: true
+    }
 
 };
 
