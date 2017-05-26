@@ -1,6 +1,18 @@
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
+
+var webpack = require('webpack');
+var config = require('../webpack.config.js');
+var compiler = webpack(config);
+app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+}));
+app.use(require('webpack-hot-middleware')(compiler));
+
+
+
 var io = require('socket.io')(server,{
     /**
      * 还可以带可选参数
@@ -11,41 +23,26 @@ var path = require('path');
 
 var staticPath = path.resolve(__dirname , ".." , "build");
 
-app.use(express.static(staticPath));
-
-
-console.log(staticPath);
-
+// app.use(express.static(path.resolve(__dirname , "..")));
+app.use(express.static(path.resolve(__dirname , ".." , "build")));
+app.use('/chatroom',express.static(path.resolve(__dirname , "..", "client")));
 
 app.get('/', function (req, res) {
   res.sendFile(staticPath + '/index.html');
 });
 
-// io.on('connection', function(socket){
-//   console.log('a user connected --- from server side');
-//   io.clients(function(error, clients){
-//       if (error) throw error;
-//       console.log(clients); 
-//     }
-//   );
-//   socket.on('disconnect', function(){
-//     console.log('user disconnected --- from server side');
-//   });
-// });
+io.on('connection', function(socket){
+  console.log(`有一个新用户${socket.id}登录了`);
 
-// io.on('connection', function(socket){
-//     socket.on('ferret', function (name, fn) {
-//         console.log("param from client is "+name);
-//         fn('woot');
-//   });
-// });
+  socket.on("message",function(obj){
+    console.log(obj.message);
+  });
+  
+  socket.on('disconnect', function(){
+    console.log(`用户${socket.id}退出了登录`);
+  });
+});
 
-// io.on('connection', function(socket){
-//   socket.on('chat message', function(msg){
-//     console.log('message: ' + msg);
-//     io.emit('chat message', msg);
-//   });
-// });
 
 
 server.listen(3000, function(){

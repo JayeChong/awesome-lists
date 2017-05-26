@@ -1,0 +1,35 @@
+.appnav{
+    height: 60px;
+    color: red;
+    border-radius: 0 0 4px 4px;
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    display: flex;
+    flex-direction: row;
+}
+
+.bottomItem{
+    flex: 1;
+    text-align: center;
+    line-height: 60px;
+    border-right: 1px solid white;
+}
+.bottomItem:hover{
+    cursor: pointer;
+}
+
+.bottom3{
+    flex: 1;
+    text-align: center;
+    line-height: 60px;
+}
+.bottom3{
+    cursor: pointer;
+}
+
+.bottom3 img{
+    margin: 12px 0;
+}
+
+.bottomItem img{
+    margin: 12px 0;
+}

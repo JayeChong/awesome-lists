@@ -11,8 +11,8 @@ const config = {
 
     entry: [
         // // 这个顺序很重要
-        // 'react-hot-loader/patch',
-        //  // 开启 React 代码的模块热替换(HMR)
+        'react-hot-loader/patch',
+         // 开启 React 代码的模块热替换(HMR)
 
         // 'webpack-dev-server/client?http://localhost:8080',
         // // 为 webpack-dev-server 的环境打包代码
@@ -32,7 +32,7 @@ const config = {
         path: path.join(ROOT,'./build'),
 
         // 对于热替换(HMR)是必须的，让 webpack 知道在哪里载入热更新的模块(chunk)
-        publicPath: '/'
+        // publicPath: '/build/'
     },
 
     module: {
@@ -51,7 +51,7 @@ const config = {
             },
             {
                 test: /\.(png|jpg)$/,
-                use: ['url-loader?limit=8192'],
+                use: ['file-loader?limit=5000&name=../img/[hash:8].[name].[ext]'],
             },
         ]
     },
@@ -60,14 +60,14 @@ const config = {
 
     plugins: [
 
-        new HtmlWebpackPlugin({
-            title: 'myApp',
-            favicon: './favicon.ico'
-        }),
+        // new HtmlWebpackPlugin({
+        //     title: 'myApp',
+        //     favicon: './favicon.ico'
+        // }),
 
-        new OpenBrowserPlugin({
-            url: 'http://localhost:8080'
-        }),
+        // new OpenBrowserPlugin({
+        //     url: 'http://localhost:8080'
+        // }),
         //只在生产环境下进行如下配置。如果开发模式下配置下面的会导致一些有用的警告不会输出，并且增加build时间
         // new webpack.DefinePlugin({
         //     'process.env': {
@@ -76,11 +76,11 @@ const config = {
         // }),
         // new webpack.optimize.UglifyJsPlugin()
 
-        // new webpack.HotModuleReplacementPlugin(),
-        // // 开启全局的模块热替换(HMR)
+        new webpack.HotModuleReplacementPlugin(),
+        // 开启全局的模块热替换(HMR)
 
-        // new webpack.NamedModulesPlugin(),
-        // // 当模块热替换(HMR)时在浏览器控制台输出对用户更友好的模块名字信息
+        new webpack.NamedModulesPlugin(),
+        // 当模块热替换(HMR)时在浏览器控制台输出对用户更友好的模块名字信息
 
     ],
 

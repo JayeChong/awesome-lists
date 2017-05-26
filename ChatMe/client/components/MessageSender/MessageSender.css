@@ -1,0 +1,13 @@
+.MessageSender{
+    box-sizing: border-box;
+    width: 100%;
+    height: 25%;
+    padding: 15px;
+}
+.MessageSender textarea{
+    width: calc(100%);
+    height: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+}

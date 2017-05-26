@@ -1,0 +1,63 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+    background-repeat: no-repeat;
+    position: relative;
+    min-width: 1200px;
+} 
+
+.containerWrap{
+    position: relative;
+    width: 60%;
+    height: 100vh;
+    padding: 40px 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 4px 4px 4px 4px;
+    
+}
+
+.container{
+    position: relative;
+    border-radius: 4px 4px 4px 4px;    
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.login{
+    position: absolute;
+    border-radius: 4px 4px 4px 4px;    
+    width: 20%;
+    margin: auto auto;
+    height: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    background-image: linear-gradient(to bottom, #a8edea 0%, #fed6e3 100%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 60px;
+}
+
+.login input{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: transparent;
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.login button{
+    outline: none;
+}
+
