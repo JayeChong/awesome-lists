@@ -31,16 +31,35 @@ app.get('/', function (req, res) {
   res.sendFile(staticPath + '/index.html');
 });
 
+// 在线用户
+var onlineUsers = {};
+// 在线用户人数
+var onlineCount = 0;
+
 io.on('connection', function(socket){
   console.log(`有一个新用户${socket.id}登录了`);
 
   socket.on("message",function(obj){
-    console.log(obj.message);
+    io.emit('message',obj);
   });
+
+  socket.on("login", function(obj){
+    if (!onlineUsers.hasOwnProperty(obj.username)) {
+            onlineUsers[obj.username] = obj.username;
+            onlineCount++;
+        }
+
+        console.log(onlineUsers);
+
+        // 向客户端发送登陆事件，同时发送在线用户、在线人数以及登陆用户
+        io.emit('someOneLogin', {onlineUsers:onlineUsers, onlineCount:onlineCount, user:obj});
+        console.log(obj.username+'加入了群聊');
+    });
   
   socket.on('disconnect', function(){
     console.log(`用户${socket.id}退出了登录`);
   });
+
 });
 
 

@@ -16,7 +16,7 @@ export default class App extends Component {
         return (
             <div className = {style.containerWrap}>
                 <div className = {style.container}>
-                    <AppBar username={this.props.params.username} />
+                    <AppBar socket={this.state.socket} username={this.props.params.username} />
                     <AppContent socket={this.state.socket} />
                     <AppNav />
                 </div>

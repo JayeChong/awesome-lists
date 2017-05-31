@@ -21,12 +21,14 @@ export default class Login extends Component {
         var username = this.state.username;
         var socket = this.state.socket;
         var path = `/chatroom/${username}`
-        console.log("username is "+username);
+        browserHistory.push(path);
         socket.emit("login",{
             username: username
         });
-        browserHistory.push(path);
-        // this.context.router.push(path);
+
+        // socket.on("someOneLogin",(obj)=>{
+        //     console.log(`some one ${obj.user.username} login forom Login.jsx`);
+        // });
 
     }
 

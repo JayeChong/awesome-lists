@@ -8,6 +8,19 @@ export default class AppBar extends Component {
         this.state = {
 
         }
+        this.listen();
+    }
+
+    listen(){
+        var socket = this.props.socket;
+        console.log("listening !");
+        console.log(socket);
+        socket.on('someOneLogin',function(obj){
+            console.log(`${obj.user}加入了群聊！`);
+        });
+        socket.on('message',function(obj){
+            console.log(`message is ${obj.message}`);
+        })
     }
     
 
